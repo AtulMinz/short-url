@@ -1,0 +1,1 @@
+A URL shortener project is a web application or service that takes long, unwieldy URLs and converts them into shorter, more manageable links. These shortened links redirect users to the original URL when clicked.
