@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(userLog('log.txt'));
 
 app.set('view engine', 'ejs');
-app.set('views', path.resolve('./views'))
+app.set('views', path.resolve('./views'));
 
 app.get('/home', async (req, res) => {
   const allUrls = await URL.find({});
