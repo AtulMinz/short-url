@@ -12,7 +12,7 @@ const URL = require('./model/user');
 require('dotenv').config()
 
 connectToDB("mongodb://localhost:27017/short-url").then(() =>
-  console.log("Mongodb connected")
+  console.log("MongoDB connected")
 )
 
 app.use(express.json());
@@ -30,6 +30,6 @@ app.get('/home', async (req, res) => {
 
 app.use("/", urlRoute);
 
-app.get("/url/:shortId", urlRoute);
+app.get("/:shortId", urlRoute);
 
 app.listen(process.env.PORT, () => console.log(`server running on port: http://localhost:${process.env.PORT}`));

@@ -38,7 +38,12 @@ async function handleRedirect(req, res) {
       },
     }
   );
-  res.redirect(entry.redirectURL);
+  if (entry && entry.redirectURL) {
+    res.redirect(entry.redirectURL);
+  } else {
+    // Handle the case when entry or redirectURL is null or undefined
+    res.status(404).json({ error: "URL not found" });
+  }
 }
 
 module.exports = { handleCreateURL, handleGetAnalytics, handleRedirect };
