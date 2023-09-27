@@ -1,6 +1,7 @@
 const express = require('express');
 
 const { handleCreateURL, handleGetAnalytics, handleRedirect } = require('../controller/index')
+const { handleSignUp } = require('../controller/user')
 
 const router = express.Router();
 

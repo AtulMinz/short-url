@@ -1,5 +1,5 @@
 const shortid = require('shortid')
-const URL = require('../model/user');
+const URL = require('../model/url');
 
 async function handleCreateURL(req, res) {
     const body = req.body;

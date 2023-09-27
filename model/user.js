@@ -1,18 +1,21 @@
 const mongoose = require('mongoose');
 
-const urlSchema = new mongoose.Schema({
-    shortId : {
+const user = new mongoose.Schema({
+    name : {
+        type: String,
+        required: true,
+    },
+    email : {
         type : String,
+        required : true,
         unique : true,
+    },
+    password : {
+        type : String,
         required : true,
     },
-    redirectURL : {
-        type : String,
-        required : true
-    },
-    visitHistory : [{ timestamp : { type : Number} }],
-}, { timestamps : true });
+}, { timestamps: true });
 
-const URL = mongoose.model('url', urlSchema);
+const User = mongoose.model('user', user);
 
-module.exports = URL;
+module.exports = User;
