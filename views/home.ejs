@@ -1,48 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <link href="index.css" type="text/css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Home</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-    </style>
-</head>
-<body>
-    <h1>URL Shortner</h1>
-    <div>
-        <form method="POST" action="/url">
-            <label for="">Enter URL</label>
-            <input 
-            type="text" 
-            name="url" 
-            placeholder="https://example.com">
-            <button type="submit">Generate</button>
-        </form>
+  </head>
+  <body>
+    <h1 class="d-flex justify-content-center mt-5 mb-4">URL Shortner</h1>
+    <div class="container mt-4 mb-4">
+      <div class="row justify-content-center">
+        <div class="col-sm-4">
+          <form method="POST" action="/url" class="row g-3 align-items-center">
+            <div class="col-auto">
+              <label for="urlInput" class="font-monospace">Enter URL</label>
+            </div>
+            <div class="col-auto">
+              <input
+                class="form-control"
+                type="text"
+                id="urlInput"
+                name="url"
+                placeholder="https://example.com"
+              />
+            </div>
+            <div class="col-auto">
+              <button type="submit" class="btn btn-danger">Generate</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
-    <div>
+
+    <div class="d-flex justify-content-center">
+      <div class="">
         <% if (locals.urls) { %>
-         <table>
-            <thead>
-                <th>S. No</th>
-                <th>ShortID</th>
-                <th>Redirect</th>
-                <th>Clicks</th>
-            </thead>
-            <tbody>
-                <% urls.forEach((url, index) => { %>
-                    <tr>
-                        <td><%= index + 1 %></td>
-                        <td><%= url.shortId %></td>
-                        <td><%= url.redirectURL %></td>
-                        <td><%= url.visitHistory.length %></td>
-                    </tr>
-                <% }) %>
-            </tbody>
-         </table>
+        <table class="table table-striped table-bordered">
+          <thead class="table-dark">
+            <th>S. No</th>
+            <th>ShortID</th>
+            <th>Redirect</th>
+            <th>Clicks</th>
+          </thead>
+          <tbody>
+            <% urls.forEach((url, index) => { %>
+            <tr>
+              <td><%= index + 1 %></td>
+              <td>
+                <a
+                  href="<%= url.redirectURL %>"
+                  class="link-success link-offset-2 link-underline-opacity-0 link-underline-opacity-50-hover"
+                  ><%= url.shortId %></a
+                >
+              </td>
+              <td><%= url.redirectURL %></td>
+              <td><%= url.visitHistory.length %></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
         <% } %>
+      </div>
     </div>
-</body>
+  </body>
 </html>
