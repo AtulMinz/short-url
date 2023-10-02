@@ -33,7 +33,7 @@ app.use("/url", restrictToLoggedinUserOnly, urlRoute);
 app.use("/", staticRoute);
 app.use("/user", userRoute);
 
-app.get("/url/:shortId", urlRoute);
+app.get("/:shortId", urlRoute);
 
 app.listen(process.env.PORT, () =>
   console.log(`server running on port: http://localhost:${process.env.PORT}`)
