@@ -1,4 +1,3 @@
-const { v4: uuidv4 } = require("uuid");
 const User = require("../model/user");
 const { setUser } = require("../service/auth");
 
@@ -9,6 +8,8 @@ async function handleSignUp(req, res) {
     email,
     password,
   });
+  const token = setUser(email);
+  res.cookie("jwt", token);
   return res.redirect("/");
 }
 
@@ -19,9 +20,8 @@ async function handleLogIn(req, res) {
     return res.render("/login", {
       error: "Invalid email or password",
     });
-  const sessionId = uuidv4();
-  setUser(sessionId, user);
-  res.cookie("uid", sessionId);
+  const token = setUser(user);
+  res.cookie("jwt", token);
   res.redirect("/");
 }
 
