@@ -1,12 +1,12 @@
-const fs = require('fs');
+// const fs = require('fs');
 
-function userLog(filename) {
-    return (req, res, next) => {
-        fs.appendFile(filename, `\n${Date.now()}:${req.ip} ${req.method} ${req.path}`,
-        (err, data) => {
-            next();
-        });
-    }
-}
+// function userLog(filename) {
+//     return (req, res, next) => {
+//         fs.appendFile(filename, `\n${Date.now()}:${req.ip} ${req.method} ${req.path}`,
+//         (err, data) => {
+//             next();
+//         });
+//     }
+// }
 
-module.exports = { userLog };
+// module.exports = { userLog };
